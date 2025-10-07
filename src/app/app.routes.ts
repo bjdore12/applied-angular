@@ -17,6 +17,11 @@ export const routes: Routes = [
       import('../demos/demos.routes').then((r) => r.DEMO_ROUTES),
   },
   {
+    path: 'links',
+    loadChildren: () =>
+      import('../links/link.route').then((l) => l.LINKS_ROUTES),
+  },
+  {
     path: '**',
     redirectTo: 'dashboard',
   },

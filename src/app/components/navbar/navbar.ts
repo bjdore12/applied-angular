@@ -19,8 +19,12 @@ export class Navbar {
       path: '/dashboard',
     },
     {
-      label: "Demos",
-      path: "/demos"
+      label: 'Demos',
+      path: '/demos',
+    },
+    {
+      label: 'Useful Links',
+      path: '/links',
     },
     {
       label: 'Support',
