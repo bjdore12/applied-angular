@@ -30,5 +30,9 @@ export class Navbar {
       label: 'Support',
       path: '/support',
     },
+    {
+      label: 'Counter',
+      path: '/counter-lab',
+    },
   ]);
 }
