@@ -8,10 +8,11 @@ import { LinksStore } from './stores/links';
   providers: [LinksStore],
   imports: [RouterLink, RouterOutlet],
   template: `
-    @if (store.linksResource.isLoading() === false) {
+    @if (store.isLoaded()) {
       <div class="flex flex-row gap-4">
         <a class="link" routerLink="list">List</a>
         <a class="link" routerLink="prefs">Prefs</a>
+        <a class="link" routerLink="add">Add A Link</a>
       </div>
       <div class="alert alert-info">
         <p>There are {{ store.getNumberOfLinks() }} Links Available!</p>

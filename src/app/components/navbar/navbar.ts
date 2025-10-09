@@ -1,15 +1,40 @@
-import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { NavbarLink } from './types';
 import { NavbarCenter } from './components/navbar-center';
 import { NavbarSide } from './components/navbar-side';
+import { NavbarLink } from './types';
 import { NavbarHamburgerMenu } from './components/navbar-hamburger-menu';
+import { LoginState } from './components/login-state';
 
 @Component({
   selector: 'app-nav-bar',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, NavbarSide, NavbarCenter, NavbarHamburgerMenu],
-  templateUrl: './navbar.html',
+  imports: [
+    RouterLink,
+    NavbarCenter,
+    NavbarSide,
+    NavbarHamburgerMenu,
+    LoginState,
+  ],
+  template: `
+    <div class="navbar bg-base-100 shadow-sm">
+      <div class="navbar-start">
+        <div class="dropdown">
+          <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+            <app-navbar-hamburger-menu />
+          </div>
+          <app-navbar-side [links]="links()" />
+        </div>
+        <a routerLink="/" class="btn btn-ghost text-xl">Applied Angular</a>
+      </div>
+      <div class="navbar-center hidden lg:flex">
+        <app-navbar-center [links]="links()" />
+      </div>
+      <div class="navbar-end">
+        <app-login-status />
+      </div>
+    </div>
+  `,
   styles: ``,
 })
 export class Navbar {
@@ -27,12 +52,20 @@ export class Navbar {
       path: '/links',
     },
     {
-      label: 'Support',
-      path: '/support',
+      label: 'Useful Links RX',
+      path: '/links-rx',
     },
     {
-      label: 'Counter',
+      label: 'Counter Lab',
       path: '/counter-lab',
+    },
+    {
+      label: 'Counter Lab Events',
+      path: '/counter-lab-es',
+    },
+    {
+      label: 'Support',
+      path: '/support',
     },
   ]);
 }
